@@ -1,0 +1,8 @@
+.main {
+    display: flex;
+    flex-direction: column;
+}
+.incomes,
+.outcomes {
+    margin-bottom: 100px;
+}
