@@ -5,15 +5,13 @@ import {addIncomes, addOutcomes} from "../../store/inputsReducer";
 
 const DataInputs = () => {
 
-
-
     return (
         <main className={s.main}>
-            <section className={s.incomes}>
+            <section className={s.incomeValue}>
                 <h3>Доходы</h3>
                 <TextInput addValue={addIncomes}/>
             </section>
-            <section className={s.outcomes}>
+            <section className={s.outcomeValue}>
                 <h3>Расходы</h3>
                 <TextInput addValue={addOutcomes}/>
             </section>

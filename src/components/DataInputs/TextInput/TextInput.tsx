@@ -11,13 +11,11 @@ type PropsType = {
 
 const TextInput = (props: PropsType) => {
 
-    // const [error, setError] = useState<string>('')
     const [value, setValue] = useState<number>(0)
     const dispatch = useDispatch<Dispatch>()
 
     const onValueChange = (e: ChangeEvent<HTMLInputElement>) => {
         Number(e.currentTarget.value) ? setValue(+e.currentTarget.value) : setValue(0)
-        // setError('')
     }
     const onValueAdd = () => {
         dispatch(props.addValue(+value))

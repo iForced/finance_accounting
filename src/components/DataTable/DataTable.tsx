@@ -3,11 +3,19 @@ import s from './DataTable.module.css'
 import {useSelector} from "react-redux";
 import {AppStateType} from "../../store/store";
 import {Card, Paper} from "@material-ui/core";
+import {UnitType} from "../../store/inputsReducer";
 
 const DataTable = () => {
 
-    const incomes = useSelector<AppStateType, number>(state => state.inputsReducer.incomes)
-    const outcomes = useSelector<AppStateType, number>(state => state.inputsReducer.outcomes)
+    const incomes = useSelector<AppStateType, Array<UnitType>>(state => state.inputsReducer.incomes)
+    const incomesSummary = incomes.reduce((acc, cur) => {
+        return acc + cur.value
+    }, 0)
+    const outcomes = useSelector<AppStateType, Array<UnitType>>(state => state.inputsReducer.outcomes)
+    const outcomesSummary = outcomes.reduce((acc, cur) => {
+        return acc + cur.value
+    }, 0)
+    const difference = incomesSummary - outcomesSummary
 
     return (
         <div className={s.table}>
@@ -17,7 +25,7 @@ const DataTable = () => {
                         Всего заработано
                     </h3>
                     <div className={s.cardValue}>
-                        {incomes}
+                        {incomesSummary}
                     </div>
                 </Card>
                 <Card raised className={s.outputCard}>
@@ -25,7 +33,7 @@ const DataTable = () => {
                         Всего потрачено
                     </h3>
                     <div className={s.cardValue}>
-                        {outcomes}
+                        {outcomesSummary}
                     </div>
                 </Card>
                 <Card raised className={s.outputCard}>
@@ -33,7 +41,7 @@ const DataTable = () => {
                         Разница
                     </h3>
                     <div className={s.cardValue}>
-                        {incomes - outcomes}
+                        {difference}
                     </div>
                 </Card>
             </Paper>
