@@ -4,10 +4,13 @@ import {Button, TextField} from "@material-ui/core";
 import {useDispatch} from "react-redux";
 import {Dispatch} from "redux";
 import {ActionsType} from "../../../store/inputsReducer";
+import moment from "moment";
 
 type PropsType = {
-    addValue: (value: number) => ActionsType
+    addValue: (value: number, day: string) => ActionsType
 }
+
+const now = moment().format('DD MM YYYY')
 
 const TextInput = (props: PropsType) => {
 
@@ -18,12 +21,12 @@ const TextInput = (props: PropsType) => {
         Number(e.currentTarget.value) ? setValue(+e.currentTarget.value) : setValue(0)
     }
     const onValueAdd = () => {
-        dispatch(props.addValue(+value))
+        dispatch(props.addValue(+value, now))
         setValue(0)
     }
     const onEnterPress = (e: KeyboardEvent<HTMLInputElement>) => {
         if (e.key === 'Enter') {
-            dispatch(props.addValue(+value))
+            dispatch(props.addValue(+value, now))
             setValue(0)
         }
     }

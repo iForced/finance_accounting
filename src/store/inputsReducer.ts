@@ -11,46 +11,56 @@ export type ActionsType =
     AddIncomesActionType
     | AddOutcomesActionType
 
+// type InitialStateType = {
+//     incomes: Array<UnitType>,
+//     outcomes: Array<UnitType>,
+// }
+// export type UnitType = {
+//     addDate: string
+//     value: number
+// }
 type InitialStateType = {
-    incomes: Array<UnitType>,
-    outcomes: Array<UnitType>,
-}
-export type UnitType = {
-    addDate: string
-    value: number
+    [day: string]: {
+        incomes: Array<number>
+        outcomes: Array<number>
+    }
 }
 
 export const now = moment().format('DD MM YYYY')
 
 const initialState: InitialStateType = {
-    incomes: [],
-    outcomes: [],
+    [now]: {
+        incomes: [50],
+        outcomes: [20]
+    }
 }
 
 export const inputsReducer = (state: InitialStateType = initialState, action: ActionsType): InitialStateType => {
     switch (action.type) {
 
         case Actions.ADD_INCOMES:
-            const newIncome = {addDate: now, value: action.value}
-            return {...state, incomes: [...state.incomes, newIncome]}
+            const newIncome = action.value
+            return {...state, [action.day]: {...state[action.day], incomes: [...state[action.day].incomes, newIncome]}}
 
         case Actions.ADD_OUTCOMES:
-            const newOutcome = {addDate: now, value: action.value}
-            return {...state, outcomes: [...state.outcomes, newOutcome]}
+            const newOutcome = action.value
+            return {...state, [action.day]: {...state[action.day], outcomes: [...state[action.day].outcomes, newOutcome]}}
 
         default:
             return state
     }
 }
-export const addIncomes = (value: number) => {
+export const addIncomes = (value: number, day: string) => {
     return {
         type: Actions.ADD_INCOMES,
+        day,
         value,
     }
 }
-export const addOutcomes = (value: number) => {
+export const addOutcomes = (value: number, day: string) => {
     return {
         type: Actions.ADD_OUTCOMES,
+        day,
         value,
     }
 }

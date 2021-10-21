@@ -3,17 +3,19 @@ import s from './DataTable.module.css'
 import {useSelector} from "react-redux";
 import {AppStateType} from "../../store/store";
 import {Card, Paper} from "@material-ui/core";
-import {UnitType} from "../../store/inputsReducer";
+import moment from "moment";
+// import {UnitType} from "../../store/inputsReducer";
 
 const DataTable = () => {
+    const now = moment().format('DD MM YYYY')
 
-    const incomes = useSelector<AppStateType, Array<UnitType>>(state => state.inputsReducer.incomes)
+    const incomes = useSelector<AppStateType, Array<number>>(state => state.inputsReducer[now].incomes)
     const incomesSummary = incomes.reduce((acc, cur) => {
-        return acc + cur.value
+        return acc + cur
     }, 0)
-    const outcomes = useSelector<AppStateType, Array<UnitType>>(state => state.inputsReducer.outcomes)
+    const outcomes = useSelector<AppStateType, Array<number>>(state => state.inputsReducer[now].outcomes)
     const outcomesSummary = outcomes.reduce((acc, cur) => {
-        return acc + cur.value
+        return acc + cur
     }, 0)
     const difference = incomesSummary - outcomesSummary
 
