@@ -1,28 +1,35 @@
 import React from 'react';
 import {Card} from "@material-ui/core";
 import s from "../DataTable.module.css";
-import {ITransaction} from "../../../database/database";
-import {now} from "../../../store/inputsReducer";
+import {db} from "../../../database/database";
+import {useLiveQuery} from "dexie-react-hooks";
 
-type PropsType = {
-    incomes: Array<ITransaction>
-    outcomes: Array<ITransaction>
-}
+const Today = () => {
+    console.log('today')
 
-const Today = (props: PropsType) => {
+    const incomes = useLiveQuery(
+        () => db
+            .table('transactions')
+            .where('type')
+            .equals('income')
+            .toArray()
+    )
+    const outcomes = useLiveQuery(
+        () => db
+            .table('transactions')
+            .where('type')
+            .equals('outcome')
+            .toArray()
+    )
+    if (!incomes || !outcomes) return null
 
-    const {incomes, outcomes} = props
-
-    const incomesToday = incomes.filter(inc => inc.addDate === now)
-    const outcomesToday = outcomes.filter(out => out.addDate === now)
-
-    const incomesSummary = incomesToday.reduce((acc, cur) => {
+    const incomesSum = incomes.reduce((acc, cur) => {
         return acc + cur.value
     }, 0)
-    const outcomesSummary = outcomesToday.reduce((acc, cur) => {
+    const outcomesSum = outcomes.reduce((acc, cur) => {
         return acc + cur.value
     }, 0)
-    const difference = incomesSummary - outcomesSummary
+    const diff = incomesSum - outcomesSum
 
     return (
         <div>
@@ -31,7 +38,7 @@ const Today = (props: PropsType) => {
                     Всего заработано
                 </h3>
                 <div className={s.cardValue}>
-                    {incomesSummary}
+                    {incomesSum}
                 </div>
             </Card>
             <Card raised className={s.outputCard}>
@@ -39,7 +46,7 @@ const Today = (props: PropsType) => {
                     Всего потрачено
                 </h3>
                 <div className={s.cardValue}>
-                    {outcomesSummary}
+                    {outcomesSum}
                 </div>
             </Card>
             <Card raised className={s.outputCard}>
@@ -47,7 +54,7 @@ const Today = (props: PropsType) => {
                     Разница
                 </h3>
                 <div className={s.cardValue}>
-                    {difference}
+                    {diff}
                 </div>
             </Card>
         </div>

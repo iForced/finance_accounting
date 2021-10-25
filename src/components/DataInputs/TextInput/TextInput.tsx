@@ -3,8 +3,7 @@ import s from './TextInput.module.css'
 import {Button, TextField} from "@material-ui/core";
 import {useDispatch} from "react-redux";
 import {Dispatch} from "redux";
-import {ActionsType} from "../../../store/inputsReducer";
-import moment from "moment";
+import {ActionsType, now} from "../../../store/inputsReducer";
 import {db} from "../../../database/database";
 import {v1} from "uuid";
 
@@ -12,8 +11,6 @@ type PropsType = {
     addValue: (value: number, day: string) => ActionsType
     type: 'income' | 'outcome'
 }
-
-const now = moment().format('DD MM YYYY')
 
 const TextInput = (props: PropsType) => {
 

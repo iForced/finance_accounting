@@ -1,12 +1,10 @@
 import moment from "moment";
-import {db, ITransaction} from "../database/database";
+import {ITransaction} from "../database/database";
 import {v1} from "uuid";
-import {Dispatch} from "redux";
 
 export enum Actions {
     ADD_INCOMES = 'ADD_INCOMES',
     ADD_OUTCOMES = 'ADD_OUTCOMES',
-    LOAD_TRANSACTIONS = 'LOAD_TRANSACTIONS',
 }
 
 type AddIncomesActionType = ReturnType<typeof addIncomes>
@@ -19,7 +17,7 @@ type InitialStateType = {
     transactions: Array<ITransaction>
 }
 
-export const now = moment().format('DD MM YYYY')
+export const now = moment().format('YYYY-MM-DD')
 
 const initialState: InitialStateType = {
     transactions: []
