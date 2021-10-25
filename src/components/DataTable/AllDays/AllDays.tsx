@@ -5,7 +5,6 @@ import {now} from "../../../store/inputsReducer";
 import {useLiveQuery} from "dexie-react-hooks";
 
 const AllDays = () => {
-    console.log('all')
     const [date, setDate] = useState<string>(now.slice(0, now.lastIndexOf('-')))
     const transactions = useLiveQuery(
         () => db
@@ -26,7 +25,7 @@ const AllDays = () => {
     return (
         <>
             <div>
-                <span>Выбери день </span>
+                <span>Выбери месяц </span>
                 <input type="month" value={date} onChange={e => setDate(e.currentTarget.value)}/>
             </div>
             <TableContainer component={Paper} style={{backgroundColor: '#3f51b545'}}>
@@ -49,7 +48,7 @@ const AllDays = () => {
                     </TableBody>
                 </Table>
             </TableContainer>
-            <span>Всего доход за день: {diff}</span>
+            <span>Всего доход за месяц: {diff}</span>
         </>
     );
 };

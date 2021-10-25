@@ -25,6 +25,7 @@
     flex-direction: column;
     margin: 10px;
     padding: 10px 20px;
+    background-color: rgba(63, 81, 181, 0.27) !important;
 }
 .outputs {
     padding: 10px;

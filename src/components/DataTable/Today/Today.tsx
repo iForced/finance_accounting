@@ -5,7 +5,6 @@ import {db} from "../../../database/database";
 import {useLiveQuery} from "dexie-react-hooks";
 
 const Today = () => {
-    console.log('today')
 
     const incomes = useLiveQuery(
         () => db
