@@ -32,7 +32,7 @@ const Today = () => {
     const diff = incomesSum - outcomesSum
 
     return (
-        <div>
+        <>
             <Card raised className={s.outputCard}>
                 <h3 className={s.cardTitle}>
                     Всего заработано
@@ -57,7 +57,7 @@ const Today = () => {
                     {diff}
                 </div>
             </Card>
-        </div>
+        </>
     );
 };
 

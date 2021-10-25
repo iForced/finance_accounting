@@ -29,7 +29,7 @@ const AllDays = () => {
                 <span>Выбери день </span>
                 <input type="month" value={date} onChange={e => setDate(e.currentTarget.value)}/>
             </div>
-            <TableContainer component={Paper}>
+            <TableContainer component={Paper} style={{backgroundColor: '#3f51b545'}}>
                 <Table style={{minWidth: 650}}>
                     <TableHead>
                         <TableRow>
