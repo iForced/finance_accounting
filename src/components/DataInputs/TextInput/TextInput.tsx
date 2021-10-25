@@ -5,9 +5,12 @@ import {useDispatch} from "react-redux";
 import {Dispatch} from "redux";
 import {ActionsType} from "../../../store/inputsReducer";
 import moment from "moment";
+import {db} from "../../../database/database";
+import {v1} from "uuid";
 
 type PropsType = {
     addValue: (value: number, day: string) => ActionsType
+    type: 'income' | 'outcome'
 }
 
 const now = moment().format('DD MM YYYY')
@@ -21,13 +24,16 @@ const TextInput = (props: PropsType) => {
         Number(e.currentTarget.value) ? setValue(+e.currentTarget.value) : setValue(0)
     }
     const onValueAdd = () => {
-        dispatch(props.addValue(+value, now))
-        setValue(0)
+        if (value) {
+            dispatch(props.addValue(+value, now))
+            const newItem = {id: v1(), type: props.type, value: value, addDate: now}
+            db.transactions.add(newItem)
+            setValue(0)
+        }
     }
     const onEnterPress = (e: KeyboardEvent<HTMLInputElement>) => {
         if (e.key === 'Enter') {
-            dispatch(props.addValue(+value, now))
-            setValue(0)
+            onValueAdd()
         }
     }
 

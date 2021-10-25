@@ -4,48 +4,33 @@ import {useSelector} from "react-redux";
 import {AppStateType} from "../../store/store";
 import {Card, Paper} from "@material-ui/core";
 import moment from "moment";
-// import {UnitType} from "../../store/inputsReducer";
+import {ITransaction} from "../../database/database";
+import {NavLink, Route} from "react-router-dom";
+import Today from "./Today/Today";
+import AllDays from "./AllDays/AllDays";
 
 const DataTable = () => {
-    const now = moment().format('DD MM YYYY')
 
-    const incomes = useSelector<AppStateType, Array<number>>(state => state.inputsReducer[now].incomes)
-    const incomesSummary = incomes.reduce((acc, cur) => {
-        return acc + cur
-    }, 0)
-    const outcomes = useSelector<AppStateType, Array<number>>(state => state.inputsReducer[now].outcomes)
-    const outcomesSummary = outcomes.reduce((acc, cur) => {
-        return acc + cur
-    }, 0)
-    const difference = incomesSummary - outcomesSummary
+    const incomes = useSelector<AppStateType, Array<ITransaction>>(state => state.inputsReducer.transactions
+        .filter(tr => tr.type === 'income'))
+    const outcomes = useSelector<AppStateType, Array<ITransaction>>(state => state.inputsReducer.transactions
+        .filter(tr => tr.type === 'outcome'))
+
 
     return (
         <div className={s.table}>
+            <nav>
+                <NavLink to={'/'}>Сегодня</NavLink>
+                <NavLink to={'/all'}>Все дни</NavLink>
+            </nav>
             <Paper elevation={8} className={s.outputs}>
-                <Card raised className={s.outputCard}>
-                    <h3 className={s.cardTitle}>
-                        Всего заработано
-                    </h3>
-                    <div className={s.cardValue}>
-                        {incomesSummary}
-                    </div>
-                </Card>
-                <Card raised className={s.outputCard}>
-                    <h3 className={s.cardTitle}>
-                        Всего потрачено
-                    </h3>
-                    <div className={s.cardValue}>
-                        {outcomesSummary}
-                    </div>
-                </Card>
-                <Card raised className={s.outputCard}>
-                    <h3 className={s.cardTitle}>
-                        Разница
-                    </h3>
-                    <div className={s.cardValue}>
-                        {difference}
-                    </div>
-                </Card>
+                <Route path={'/'} exact render={() =>
+                    <Today
+                        incomes={incomes}
+                        outcomes={outcomes}
+                    />}
+                />
+                <Route path={'/all'} render={() => <AllDays/>}/>
             </Paper>
         </div>
     );

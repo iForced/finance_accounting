@@ -9,11 +9,11 @@ const DataInputs = () => {
         <main className={s.main}>
             <section className={s.incomeValue}>
                 <h3>Доходы</h3>
-                <TextInput addValue={addIncomes}/>
+                <TextInput addValue={addIncomes} type={'income'}/>
             </section>
             <section className={s.outcomeValue}>
                 <h3>Расходы</h3>
-                <TextInput addValue={addOutcomes}/>
+                <TextInput addValue={addOutcomes} type={'outcome'}/>
             </section>
         </main>
     );
