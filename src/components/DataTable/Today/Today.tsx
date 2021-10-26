@@ -3,6 +3,7 @@ import {Card} from "@material-ui/core";
 import s from "../DataTable.module.css";
 import {db} from "../../../database/database";
 import {useLiveQuery} from "dexie-react-hooks";
+import {now} from "../../../store/inputsReducer";
 
 const Today = () => {
 
@@ -22,10 +23,10 @@ const Today = () => {
     )
     if (!incomes || !outcomes) return null
 
-    const incomesSum = incomes.reduce((acc, cur) => {
+    const incomesSum = incomes.filter(inc => inc.addDate === now).reduce((acc, cur) => {
         return acc + cur.value
     }, 0)
-    const outcomesSum = outcomes.reduce((acc, cur) => {
+    const outcomesSum = outcomes.filter(out => out.addDate === now).reduce((acc, cur) => {
         return acc + cur.value
     }, 0)
     const diff = incomesSum - outcomesSum

@@ -9,8 +9,8 @@ const AllDays = () => {
     const transactions = useLiveQuery(
         () => db
             .table('transactions')
-            .where('addDate')
-            .equals(date + now.slice(-3)).toArray(),
+            .where('addDate').startsWith(date)
+            .toArray(),
         [date])
     if (!transactions) return null
 
@@ -26,7 +26,10 @@ const AllDays = () => {
         <>
             <div>
                 <span>Выбери месяц </span>
-                <input type="month" value={date} onChange={e => setDate(e.currentTarget.value)}/>
+                <input type="month" value={date} onChange={e => {
+                    console.log(e.currentTarget.value)
+                    setDate(e.currentTarget.value)
+                }}/>
             </div>
             <TableContainer component={Paper} style={{backgroundColor: '#3f51b545'}}>
                 <Table style={{minWidth: 650}}>
