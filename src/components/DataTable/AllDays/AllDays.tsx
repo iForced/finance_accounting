@@ -61,13 +61,7 @@ const AllDays = () => {
                         </TableRow>
                     </TableHead>
                     <TableBody>
-                        {/*{transactions.map(row =>*/}
-                        {/*    <TableRow key={row.id}>*/}
-                        {/*        <TableCell>{row.addDate}</TableCell>*/}
-                        {/*        <TableCell>{row.type === 'income' ? 'Доход' : 'Расход'}</TableCell>*/}
-                        {/*        <TableCell>{row.value}</TableCell>*/}
-                        {/*    </TableRow>*/}
-                        {/*)}*/}
+                        {/*Counting number of transactions per table page when change page*/}
                         {(rowsPerPage > 0
                                 ? transactions.slice(tablePage * rowsPerPage, tablePage * rowsPerPage + rowsPerPage)
                                 : transactions
@@ -84,6 +78,7 @@ const AllDays = () => {
                                 </TableCell>
                             </TableRow>
                         ))}
+                        {/*Add empty rows on last page for not to jump height of table*/}
                         {emptyRows > 0 && (
                             <TableRow style={{height: 53 * emptyRows}}>
                                 <TableCell colSpan={6} />
