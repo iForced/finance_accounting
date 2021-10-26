@@ -1,23 +1,23 @@
 {
   "files": {
     "main.css": "/finance_accounting/static/css/main.79800289.chunk.css",
-    "main.js": "/finance_accounting/static/js/main.8976293a.chunk.js",
-    "main.js.map": "/finance_accounting/static/js/main.8976293a.chunk.js.map",
+    "main.js": "/finance_accounting/static/js/main.2fe7bbf5.chunk.js",
+    "main.js.map": "/finance_accounting/static/js/main.2fe7bbf5.chunk.js.map",
     "runtime-main.js": "/finance_accounting/static/js/runtime-main.1b1e5ab5.js",
     "runtime-main.js.map": "/finance_accounting/static/js/runtime-main.1b1e5ab5.js.map",
-    "static/js/2.8022bf7c.chunk.js": "/finance_accounting/static/js/2.8022bf7c.chunk.js",
-    "static/js/2.8022bf7c.chunk.js.map": "/finance_accounting/static/js/2.8022bf7c.chunk.js.map",
+    "static/js/2.fe974cfd.chunk.js": "/finance_accounting/static/js/2.fe974cfd.chunk.js",
+    "static/js/2.fe974cfd.chunk.js.map": "/finance_accounting/static/js/2.fe974cfd.chunk.js.map",
     "static/js/3.867ad7a9.chunk.js": "/finance_accounting/static/js/3.867ad7a9.chunk.js",
     "static/js/3.867ad7a9.chunk.js.map": "/finance_accounting/static/js/3.867ad7a9.chunk.js.map",
     "index.html": "/finance_accounting/index.html",
     "static/css/main.79800289.chunk.css.map": "/finance_accounting/static/css/main.79800289.chunk.css.map",
-    "static/js/2.8022bf7c.chunk.js.LICENSE.txt": "/finance_accounting/static/js/2.8022bf7c.chunk.js.LICENSE.txt",
+    "static/js/2.fe974cfd.chunk.js.LICENSE.txt": "/finance_accounting/static/js/2.fe974cfd.chunk.js.LICENSE.txt",
     "static/media/index.css": "/finance_accounting/static/media/background.827d1bcf.jpg"
   },
   "entrypoints": [
     "static/js/runtime-main.1b1e5ab5.js",
-    "static/js/2.8022bf7c.chunk.js",
+    "static/js/2.fe974cfd.chunk.js",
     "static/css/main.79800289.chunk.css",
-    "static/js/main.8976293a.chunk.js"
+    "static/js/main.2fe7bbf5.chunk.js"
   ]
 }
