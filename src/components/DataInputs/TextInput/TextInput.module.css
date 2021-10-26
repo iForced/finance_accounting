@@ -1,6 +1,13 @@
 .textInput {
     display: flex;
-    align-items: center;
-    width: 400px;
+    align-items: stretch;
+    width: 560px;
     justify-content: space-around;
+}
+.datePick {
+    display: flex;
+    flex-direction: column;
+}
+.datePick h3 {
+    margin: 0;
 }

@@ -15,6 +15,8 @@ type PropsType = {
 const TextInput = (props: PropsType) => {
 
     const [value, setValue] = useState<number>(0)
+    const [date, setDate] = useState<string>(now)
+
     const dispatch = useDispatch<Dispatch>()
 
     const onValueChange = (e: ChangeEvent<HTMLInputElement>) => {
@@ -22,8 +24,8 @@ const TextInput = (props: PropsType) => {
     }
     const onValueAdd = () => {
         if (value) {
-            dispatch(props.addValue(+value, now))
-            const newItem = {id: v1(), type: props.type, value: value, addDate: now}
+            dispatch(props.addValue(+value, date))
+            const newItem = {id: v1(), type: props.type, value: value, addDate: date}
             db.transactions.add(newItem)
             setValue(0)
         }
@@ -48,6 +50,10 @@ const TextInput = (props: PropsType) => {
                 onClick={onValueAdd}
             >Добавить
             </Button>
+            <div className={s.datePick}>
+                <h3>Выбери дату</h3>
+                <input type="date" value={date} onChange={(e) => setDate(e.currentTarget.value)}/>
+            </div>
         </div>
     );
 };
