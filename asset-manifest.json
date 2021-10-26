@@ -1,23 +1,23 @@
 {
   "files": {
-    "main.css": "/finance_accounting/static/css/main.c06a83d2.chunk.css",
-    "main.js": "/finance_accounting/static/js/main.43b606c8.chunk.js",
-    "main.js.map": "/finance_accounting/static/js/main.43b606c8.chunk.js.map",
-    "runtime-main.js": "/finance_accounting/static/js/runtime-main.22dcea0e.js",
-    "runtime-main.js.map": "/finance_accounting/static/js/runtime-main.22dcea0e.js.map",
-    "static/js/2.fad88935.chunk.js": "/finance_accounting/static/js/2.fad88935.chunk.js",
-    "static/js/2.fad88935.chunk.js.map": "/finance_accounting/static/js/2.fad88935.chunk.js.map",
-    "static/js/3.749aa61c.chunk.js": "/finance_accounting/static/js/3.749aa61c.chunk.js",
-    "static/js/3.749aa61c.chunk.js.map": "/finance_accounting/static/js/3.749aa61c.chunk.js.map",
+    "main.css": "/finance_accounting/static/css/main.79800289.chunk.css",
+    "main.js": "/finance_accounting/static/js/main.25c9a5b3.chunk.js",
+    "main.js.map": "/finance_accounting/static/js/main.25c9a5b3.chunk.js.map",
+    "runtime-main.js": "/finance_accounting/static/js/runtime-main.1b1e5ab5.js",
+    "runtime-main.js.map": "/finance_accounting/static/js/runtime-main.1b1e5ab5.js.map",
+    "static/js/2.8022bf7c.chunk.js": "/finance_accounting/static/js/2.8022bf7c.chunk.js",
+    "static/js/2.8022bf7c.chunk.js.map": "/finance_accounting/static/js/2.8022bf7c.chunk.js.map",
+    "static/js/3.867ad7a9.chunk.js": "/finance_accounting/static/js/3.867ad7a9.chunk.js",
+    "static/js/3.867ad7a9.chunk.js.map": "/finance_accounting/static/js/3.867ad7a9.chunk.js.map",
     "index.html": "/finance_accounting/index.html",
-    "static/css/main.c06a83d2.chunk.css.map": "/finance_accounting/static/css/main.c06a83d2.chunk.css.map",
-    "static/js/2.fad88935.chunk.js.LICENSE.txt": "/finance_accounting/static/js/2.fad88935.chunk.js.LICENSE.txt",
+    "static/css/main.79800289.chunk.css.map": "/finance_accounting/static/css/main.79800289.chunk.css.map",
+    "static/js/2.8022bf7c.chunk.js.LICENSE.txt": "/finance_accounting/static/js/2.8022bf7c.chunk.js.LICENSE.txt",
     "static/media/index.css": "/finance_accounting/static/media/background.827d1bcf.jpg"
   },
   "entrypoints": [
-    "static/js/runtime-main.22dcea0e.js",
-    "static/js/2.fad88935.chunk.js",
-    "static/css/main.c06a83d2.chunk.css",
-    "static/js/main.43b606c8.chunk.js"
+    "static/js/runtime-main.1b1e5ab5.js",
+    "static/js/2.8022bf7c.chunk.js",
+    "static/css/main.79800289.chunk.css",
+    "static/js/main.25c9a5b3.chunk.js"
   ]
 }
