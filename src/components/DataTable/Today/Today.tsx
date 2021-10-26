@@ -51,7 +51,7 @@ const Today = () => {
             </Card>
             <Card raised className={s.outputCard}>
                 <h3 className={s.cardTitle}>
-                    Разница
+                    Прибыль
                 </h3>
                 <div className={s.cardValue}>
                     {diff}

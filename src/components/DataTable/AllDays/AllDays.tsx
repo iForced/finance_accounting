@@ -48,7 +48,7 @@ const AllDays = () => {
     const onTransactionDelete = (id: string) => {
         db.table('transactions').delete(id)
     }
-    const onValueChange = (id: string, newValue: number) => {
+    const onSetValue = (id: string, newValue: number) => {
         db.table('transactions').update(id, {value: newValue})
     }
 
@@ -82,7 +82,7 @@ const AllDays = () => {
                                     {row.type === 'income' ? 'Доход' : 'Расход'}
                                 </TableCell>
                                 <TableCell>
-                                    <TableValueItem value={row.value} onValueChange={onValueChange}/>
+                                    <TableValueItem value={row.value} onSetValue={onSetValue} id={row.id}/>
                                 </TableCell>
                                 <TableCell>
                                     <button onClick={() => onTransactionDelete(row.id)}>X</button>
@@ -107,7 +107,7 @@ const AllDays = () => {
                 onPageChange={onChangeTablePage}
                 onRowsPerPageChange={onChangeRowsPerPage}
             />
-            <span>Всего доход за месяц: {diff}</span>
+            <span>Всего прибыль за месяц: {diff}</span>
         </>
     );
 };
