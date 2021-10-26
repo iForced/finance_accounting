@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {ChangeEvent, useState} from 'react';
 import {db} from "../../../database/database";
 import {
     Paper,
@@ -12,12 +12,13 @@ import {
 } from "@material-ui/core";
 import {now} from "../../../store/inputsReducer";
 import {useLiveQuery} from "dexie-react-hooks";
+import TableValueItem from "../TableValueItem/TableValueItem";
 
 const AllDays = () => {
 
     const [date, setDate] = useState<string>(now.slice(0, now.lastIndexOf('-')))
-    const [tablePage, setTablePage] = useState(0)
-    const [rowsPerPage, setRowsPerPage] = useState(10)
+    const [tablePage, setTablePage] = useState<number>(0)
+    const [rowsPerPage, setRowsPerPage] = useState<number>(10)
 
     const transactions = useLiveQuery(
         () => db
@@ -44,6 +45,12 @@ const AllDays = () => {
         setRowsPerPage(parseInt(e.target.value, 10))
         setTablePage(0)
     }
+    const onTransactionDelete = (id: string) => {
+        db.table('transactions').delete(id)
+    }
+    const onValueChange = (id: string, newValue: number) => {
+        db.table('transactions').update(id, {value: newValue})
+    }
 
     return (
         <>
@@ -58,6 +65,7 @@ const AllDays = () => {
                             <TableCell>День (ГГГГ-ММ-ДД)</TableCell>
                             <TableCell>Доход/расход</TableCell>
                             <TableCell>Значение</TableCell>
+                            <TableCell>Удалить</TableCell>
                         </TableRow>
                     </TableHead>
                     <TableBody>
@@ -74,14 +82,17 @@ const AllDays = () => {
                                     {row.type === 'income' ? 'Доход' : 'Расход'}
                                 </TableCell>
                                 <TableCell>
-                                    {row.value}
+                                    <TableValueItem value={row.value} onValueChange={onValueChange}/>
+                                </TableCell>
+                                <TableCell>
+                                    <button onClick={() => onTransactionDelete(row.id)}>X</button>
                                 </TableCell>
                             </TableRow>
                         ))}
                         {/*Add empty rows on last page for not to jump height of table*/}
                         {emptyRows > 0 && (
                             <TableRow style={{height: 53 * emptyRows}}>
-                                <TableCell colSpan={6} />
+                                <TableCell colSpan={6}/>
                             </TableRow>
                         )}
                     </TableBody>
